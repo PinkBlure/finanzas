@@ -21,12 +21,30 @@ body {
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:start;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   height: 100vh;
+  padding: 2rem 0;
+}
+
+.sidebar-btn {
+  width: 4rem;
+  height: 4rem;
+  background-color: #7B948B;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sidebar-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: white;
 }
 
 .container {
