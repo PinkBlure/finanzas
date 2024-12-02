@@ -268,4 +268,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   updateCategorySelects();
+
+  const logoutBtn = document.getElementById('logoutBtn');
+  
+  logoutBtn.addEventListener('click', function() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('isFirstVisit');
+    window.location.href = '/index.html';
+  });
 });

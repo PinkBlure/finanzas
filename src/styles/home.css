@@ -29,6 +29,7 @@ body {
   bottom: 0;
   height: 100vh;
   padding: 2rem 0;
+  cursor:pointer;
 }
 
 .sidebar-btn {
@@ -36,6 +37,18 @@ body {
   height: 4rem;
   background-color: #7B948B;
   border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+.sidebar-btn:hover {
+  width: 4rem;
+  height: 4rem;
+  background-color: #5564eb;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
