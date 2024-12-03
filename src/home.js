@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const currentUser = localStorage.getItem('currentUser');
   const isFirstVisit = localStorage.getItem('isFirstVisit');
-  
+
   if (currentUser) {
     if (!isFirstVisit) {
       document.getElementById('welcome').textContent = `Bienvenido, ${currentUser}`;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function obtenerSaludo() {
     const hora = new Date().getHours();
-    
+
     if (hora >= 6 && hora < 12) {
       return "Buenos días";
     } else if (hora >= 12 && hora < 20) {
@@ -29,20 +29,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function mostrarHoraLocal() {
     const fecha = new Date();
-  
+
     const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-  
+
     const diaSemana = diasSemana[fecha.getDay()];
     const dia = fecha.getDate();
     const mes = meses[fecha.getMonth()];
     const año = fecha.getFullYear();
-  
+
     const horas = String(fecha.getHours()).padStart(2, '0');
     const minutos = String(fecha.getMinutes()).padStart(2, '0');
-  
+
     const horaFormateada = `${diaSemana}, ${dia} de ${mes} de ${año}, ${horas}:${minutos}`;
-  
+
     document.getElementById('hora').textContent = horaFormateada;
   }
 
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(mostrarHoraLocal, 60000);
 
   const logoutBtn = document.getElementById('logoutBtn');
-  
-  logoutBtn.addEventListener('click', function() {
+
+  logoutBtn.addEventListener('click', function () {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('isFirstVisit');
     window.location.href = '/index.html';
@@ -98,4 +98,50 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   mostrarConsejoAleatorio();
+
+  const reminderButton = document.getElementById('reminderButton');
+  const remindersContainer = document.getElementById('reminder');
+
+  const reminders = JSON.parse(localStorage.getItem('reminders') || '[]');
+
+  reminderButton.addEventListener('click', () => {
+    const mensaje = prompt("Introduce el mensaje del recordatorio:");
+    const fecha = prompt("Introduce la fecha del recordatorio (YYYY-MM-DD):");
+    const hora = prompt("Introduce la hora del recordatorio (HH:MM):");
+
+    if (mensaje && fecha && hora) {
+      const dateTime = new Date(`${fecha}T${hora}`);
+      reminders.push({ mensaje, dateTime });
+      localStorage.setItem('reminders', JSON.stringify(reminders));
+      alert('Recordatorio añadido con éxito.');
+    } else {
+      alert('Por favor, completa todos los campos correctamente.');
+    }
+  });
+
+  function verificarRecordatorios() {
+    const now = new Date();
+
+    reminders.forEach((recordatorio, index) => {
+      const reminderTime = new Date(recordatorio.dateTime);
+
+      if (reminderTime <= now) {
+        const reminderElement = document.createElement('p');
+        reminderElement.innerHTML = `
+          ${recordatorio.mensaje}
+          <button>Vale</button>
+        `;
+        remindersContainer.appendChild(reminderElement);
+
+        const valeButton = reminderElement.querySelector('.vale-btn');
+        valeButton.addEventListener('click', () => {
+          reminders.splice(index, 1);
+          localStorage.setItem('reminders', JSON.stringify(reminders));
+          reminderElement.remove();
+        });
+      }
+    });
+  }
+
+  setInterval(verificarRecordatorios, 60000);
 });

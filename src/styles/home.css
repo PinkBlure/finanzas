@@ -122,3 +122,12 @@ footer a {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
 }
+
+button {
+  background-color: #7B948B;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
