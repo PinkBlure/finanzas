@@ -45,15 +45,7 @@ body {
 }
 
 .sidebar-btn:hover {
-  width: 4rem;
-  height: 4rem;
-  background-color: #5564eb;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  margin-bottom: 2rem;
+  border: 2px solid black;
 }
 
 .sidebar-icon {

@@ -40,6 +40,10 @@ body {
   cursor:pointer;
 }
 
+.sidebar-btn:hover {
+  border: 2px solid black;
+}
+
 .sidebar-icon {
   width: 2rem;
   height: 2rem;
