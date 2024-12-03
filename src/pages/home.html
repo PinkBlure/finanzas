@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finanzas Personales - Home</title>
+  <link rel="stylesheet" href="../styles/home.css">
+</head>
+
+<body>
+
+  <header class="sidebar">
+    <a href="/src/pages/home.html" class="sidebar-btn">
+      <img src="/src/img/hogar.svg" alt="Home" class="sidebar-icon">
+    </a>
+    <a href="/src/pages/balance.html" class="sidebar-btn">
+      <img src="/src/img/balance.svg" alt="Balance" class="sidebar-icon">
+    </a>
+    <a id="logoutBtn" class="sidebar-btn">
+      <img src="/src/img/flecha-pequena-izquierda.svg" alt="Cerrar sesion" class="sidebar-icon">
+    </a>
+  </header>
+  
+  <div class="container">
+    <main class="content">
+      <section class="info">
+        <h1 id="welcome">Bienvenido, Usuario</h1>
+        <p id="hora"></p>
+      </section>
+      <div class="bento">
+        <section id="summary" class="box">
+          <h3 class="tableTitle">Resumen Financiero</h3>
+          <p id="totalIncome">Total Ingresos: $0.00</p>
+          <p id="totalExpenses">Total Gastos: $0.00</p>
+          <p id="balance">Balance: $0.00</p>
+        </section>
+        <section id="consejo" class="box">
+          <h3 class="tableTitle">Consejos</h3>
+        </section>
+        <section id="recordatorio" class="box">
+          <h3 class="tableTitle">Recordatorios</h3>
+          <button id="addReminderBtn">Añadir Recordatorio</button>
+          <form id="reminderForm">
+            <label for="reminderMessage">Mensaje:</label>
+            <input type="text" id="reminderMessage" required>
+            <label for="reminderDate">Fecha y Hora:</label>
+            <input type="datetime-local" id="reminderDate" required>
+            <button type="submit">Guardar</button>
+          </form>
+          <div id="reminderList"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <a href="https://github.com/PinkBlure">@PinkBlure</a>
+    </footer>
+  </div>
+
+  <script src="../home.js"></script>
+</body>
+
+</html>
