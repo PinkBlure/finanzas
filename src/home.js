@@ -77,4 +77,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const found = cookies.find((row) => row.startsWith(name + "="));
     return found ? found.split("=")[1] : null;
   }
+
+  const consejos = [
+    "Ahorra al menos el 10% de tus ingresos cada mes.",
+    "Haz un presupuesto mensual y síguelo.",
+    "Evita las compras impulsivas.",
+    "Invierte en tu educación financiera.",
+    "Reduce tus gastos en cosas innecesarias.",
+    "Ten un fondo de emergencia para cubrir al menos 3 meses de gastos.",
+    "Revisa tus suscripciones y cancela las que no uses.",
+    "Compara precios antes de realizar compras grandes.",
+    "Paga tus deudas lo antes posible para evitar intereses.",
+    "Planifica tus metas financieras a corto y largo plazo."
+  ];
+
+  function mostrarConsejoAleatorio() {
+    const indiceAleatorio = Math.floor(Math.random() * consejos.length);
+    const consejo = consejos[indiceAleatorio];
+    document.querySelector('#summary + section').innerHTML += `<p>${consejo}</p>`;
+  }
+
+  mostrarConsejoAleatorio();
 });

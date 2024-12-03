@@ -90,7 +90,7 @@ footer a {
   justify-content: space-between;
 }
 
-#summary {
+.box {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 0.8rem;
@@ -100,28 +100,25 @@ footer a {
   max-width: 400px;
 }
 
-#summary h3 {
+.box h3 {
   font-size: 24px;
   color: #333;
   margin-bottom: 15px;
   text-align: center;
 }
 
-#summary p {
+.box p {
   font-size: 18px;
   color: #555;
   margin: 8px 0;
 }
 
-#totalIncome {
-  color: #2ecc71;
-}
-
-#totalExpenses {
-  color: #e74c3c;
-}
-
 #balance {
   font-weight: bold;
-  color: #3498db;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
 }
