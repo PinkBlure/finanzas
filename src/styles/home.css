@@ -120,7 +120,7 @@ footer a {
 .bento {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
+  grid-column-gap: 2rem;
 }
 
 button {
@@ -130,4 +130,35 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.reminderForm {
+  display: none;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.reminderForm label {
+  margin: .5rem 0;
+}
+
+.reminderForm input {
+  height: 2rem;
+  border: 2px solid #7B948B;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.reminderForm button {
+  margin-top: 1rem;
+}
+
+.reminderButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#reminderForm.visible {
+  display: flex;
 }

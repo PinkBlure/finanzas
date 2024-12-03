@@ -99,25 +99,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
   mostrarConsejoAleatorio();
 
+  const reminders = JSON.parse(localStorage.getItem('reminders') || '[]');
   const reminderButton = document.getElementById('reminderButton');
+  const reminderForm = document.getElementById('reminderForm');
+  const reminderMessage = document.getElementById('reminderMessage');
+  const reminderDate = document.getElementById('reminderDate');
+  const reminderTime = document.getElementById('reminderTime');
+  const submitReminder = document.getElementById('submitReminder');
+  const reminderList = document.getElementById('reminderList');
   const remindersContainer = document.getElementById('reminder');
 
-  const reminders = JSON.parse(localStorage.getItem('reminders') || '[]');
+  reminderButton.addEventListener('click', function () {
+    if (reminderForm.style.display === 'flex') {
+      reminderForm.style.display = 'none';
+    } else {
+      reminderForm.style.display = 'flex';
+    }
+  });
 
-  reminderButton.addEventListener('click', () => {
-    const mensaje = prompt("Introduce el mensaje del recordatorio:");
-    const fecha = prompt("Introduce la fecha del recordatorio (YYYY-MM-DD):");
-    const hora = prompt("Introduce la hora del recordatorio (HH:MM):");
+  submitReminder.addEventListener('click', () => {
+    const mensaje = reminderMessage.value;
+    const fecha = reminderDate.value;
+    const hora = reminderTime.value;
 
     if (mensaje && fecha && hora) {
       const dateTime = new Date(`${fecha}T${hora}`);
-      reminders.push({ mensaje, dateTime });
+      reminders.push({ mensaje, dateTime: dateTime.toISOString() });
       localStorage.setItem('reminders', JSON.stringify(reminders));
+
       alert('Recordatorio añadido con éxito.');
+      reminderMessage.value = '';
+      reminderDate.value = '';
+      reminderTime.value = '';
+      reminderForm.style.display = 'none';
     } else {
       alert('Por favor, completa todos los campos correctamente.');
     }
   });
+
+  function renderLog() {
+    reminderList.innerHTML = '';
+    reminders.forEach((recordatorio, index) => {
+      const li = document.createElement('li');
+      const reminderTime = new Date(recordatorio.dateTime).toLocaleString();
+      li.textContent = `${recordatorio.mensaje} - ${reminderTime}`;
+      reminderList.appendChild(li);
+    });
+  }
 
   function verificarRecordatorios() {
     const now = new Date();
@@ -129,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const reminderElement = document.createElement('p');
         reminderElement.innerHTML = `
           ${recordatorio.mensaje}
-          <button>Vale</button>
+          <button class="vale-btn">Vale</button>
         `;
         remindersContainer.appendChild(reminderElement);
 

@@ -24,24 +24,43 @@
   
   <div class="container">
     <main class="content">
+
       <section class="info">
         <h1 id="welcome">Bienvenido, Usuario</h1>
         <p id="hora"></p>
       </section>
+
       <div class="bento">
+
         <section id="summary" class="box">
           <h3 class="tableTitle">Resumen Financiero</h3>
           <p id="totalIncome">Total Ingresos: $0.00</p>
           <p id="totalExpenses">Total Gastos: $0.00</p>
           <p id="balance">Balance: $0.00</p>
         </section>
+
         <section class="box">
           <h3 class="tableTitle">Un consejo...</h3>
         </section>
+
         <section id="reminder" class="box">
           <h3 class="tableTitle">Recordatorio</h3>
-          <button id="reminderButton">Añadir recordatorio</button>
-        </section>
+          
+          <div class="reminderButtons">
+            <button id="reminderButton">Añadir recordatorio</button>
+          </div>
+
+          <div id="reminderForm" class="reminderForm">
+            <label for="reminderMessage">Mensaje:</label>
+            <input type="text" id="reminderMessage" placeholder="Escribe el mensaje">
+            <label for="reminderDate">Fecha:</label>
+            <input type="date" id="reminderDate">
+            <label for="reminderTime">Hora:</label>
+            <input type="time" id="reminderTime">
+            <button id="submitReminder">Crear Recordatorio</button>
+          </div>
+
+        </section>        
       </div>
       
     </main>
